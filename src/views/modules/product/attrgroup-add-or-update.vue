@@ -82,10 +82,10 @@ export default {
     },
     getCategorys(){
       this.$http({
-        url: this.$http.adornUrl("/product/category/list/tree"),
+        url: this.$http.adornUrl("/product/category/tree"),
         method: "get"
       }).then(({ data }) => {
-        this.categorys = data.data;
+        this.categorys = data;
       });
     },
     init(id) {
@@ -108,7 +108,7 @@ export default {
               this.dataForm.icon = data.attrGroup.icon;
               this.dataForm.catelogId = data.attrGroup.catelogId;
               //查出catelogId的完整路径
-              this.catelogPath =  data.attrGroup.catelogPath;
+              this.catelogPath =  data.attrGroup.catlogPath;
             }
           });
         }

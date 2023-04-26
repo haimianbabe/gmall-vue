@@ -41,7 +41,7 @@ export default {
       setting: {
         value: "catId",
         label: "name",
-        children: "children"
+        children: "childCategoryEntity"
       },
       categorys: [],
       paths: this.catelogPath
@@ -61,10 +61,10 @@ export default {
   methods: {
     getCategorys() {
       this.$http({
-        url: this.$http.adornUrl("/product/category/list/tree"),
+        url: this.$http.adornUrl("/product/category/tree"),
         method: "get"
       }).then(({ data }) => {
-        this.categorys = data.data;
+        this.categorys = data;
       });
     }
   },
