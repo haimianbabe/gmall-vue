@@ -4,7 +4,7 @@
       <el-option
         v-for="item in brands"
         :key="item.brandId"
-        :label="item.brandName"
+        :label="item.name"
         :value="item.brandId"
       ></el-option>
     </el-select>
@@ -24,10 +24,6 @@ export default {
     return {
       catId: 0,
       brands: [
-        {
-          label: "a",
-          value: 1
-        }
       ],
       brandId: "",
       subscribe: null
@@ -61,7 +57,6 @@ export default {
   mounted() {
     //监听三级分类消息的变化
     this.subscribe = PubSub.subscribe("catPath", (msg, val) => {
-      alert("1")
       this.catId = val[val.length - 1];
       this.getCatBrands();
     });
